@@ -139,13 +139,8 @@
                     <i class="fa-solid fa-qrcode"></i> QR Code
                 </button>
             </div>
-
-            <!-- Download Contact (Subtiel) -->
-            <div class="mt-5 text-center">
-                <a href="#" onclick="alert('In een echte omgeving zou dit de contactgegevens opslaan naar je telefoonboek!');" class="text-xs text-gray-400 hover:text-pink-500 transition underline">
-                    <i class="fa-regular fa-address-book mr-1"></i> Sla contact op in telefoon
-                </a>
-            </div>
+            
+            <!-- (De link voor "Sla contact op in telefoon" is hier verwijderd) -->
         </div>
     </div>
 
@@ -201,8 +196,6 @@
             <div class="p-8">
                 <p class="text-gray-600 text-sm mb-6">Laat anderen deze code scannen om direct op dit digitale visitekaartje te komen.</p>
                 
-                <!-- De QR Code afbeelding. 
-                     Door het Javascript onderaan past deze zich automatisch aan naar de uiteindelijke link waar je dit bestand plaatst! -->
                 <div class="bg-white p-3 rounded-2xl border-2 border-gray-100 shadow-sm inline-block mb-4">
                     <img id="qrCodeImage" src="" alt="QR Code" class="w-48 h-48 mx-auto" />
                 </div>
@@ -227,18 +220,11 @@
             document.body.classList.toggle('modal-active');
         }
 
-        // Genereer automatisch de QR Code op basis van de huidige link (URL)
+        // Genereer de QR code met de vaste GitHub link
         window.onload = function() {
-            // Als fallback (als je het lokaal opent) gebruiken we een tijdelijke link. 
-            // In het echt pakt hij direct de live website URL!
-            let currentUrl = window.location.href;
-            if(currentUrl.startsWith("file://") || currentUrl.includes("localhost")) {
-                currentUrl = "https://www.partypret-najat.nl"; // Voorbeeld link als hij lokaal draait
-            }
-            
-            // Gebruik een gratis en betrouwbare API om de QR Code te genereren
             const qrImage = document.getElementById('qrCodeImage');
-            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(currentUrl)}&margin=0`;
+            const websiteUrl = "https://party-najat.github.io/Partypret/";
+            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(websiteUrl)}&margin=0`;
         };
     </script>
 </body>
